@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Avalonia.ComboBox.Issue.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lang="clr-namespace:Avalonia.ComboBox.Issue.Texts"
+        xmlns:local="clr-namespace:Avalonia.ComboBox.Issue"
+        xmlns:views="clr-namespace:Avalonia.ComboBox.Issue.Views"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="680"
+        x:Class="Avalonia.ComboBox.Issue.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        MinWidth="400" MinHeight="680"
+        Width="400" Height="680"
+        Padding="0"
+        Margin="0"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="0"
+        SystemDecorations="None"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Title="Avalonia ComboBox Test">
+    <Design.DataContext>
+      <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+      <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+        <Border VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+            Background="Transparent"
+            PointerPressed="Border_PointerPressed">
+          
+                <ContentControl Margin="0" Padding="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                  <ContentControl.Content>
+                    <views:ShellView DataContext="{Binding ShellVM}" />
+                  </ContentControl.Content>
+                </ContentControl>
+          
+        </Border>
+
+</Window>

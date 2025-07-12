@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Avalonia.ComboBox.Issue.ViewModels"
+             xmlns:lang="clr-namespace:Avalonia.ComboBox.Issue.Texts"
+             xmlns:views="clr-namespace:Avalonia.ComboBox.Issue.Views"
+             xmlns:controls="clr-namespace:Avalonia.ComboBox.Issue.Controls"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="680"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             x:Class="Avalonia.ComboBox.Issue.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <StackPanel Margin="0" Orientation="Vertical" HorizontalAlignment="Stretch">
+
+    <TextBlock Text="MainView" />
+
+    <ComboBox Width="200" Margin="20">
+      <ComboBoxItem Content="Option 1" />
+      <ComboBoxItem Content="Option 2" />
+      <ComboBoxItem Content="Option 3" />
+      <ComboBoxItem Content="Option 4" />
+      <ComboBoxItem Content="Option 5" />
+    </ComboBox>
+    
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:rxui="http://reactiveui.net"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="680"
+             xmlns:dialogs="using:AvaloniaDialogs.Views"
+             xmlns:utils="clr-namespace:Avalonia.ComboBox.Issue.Utils"
+             x:Class="Avalonia.ComboBox.Issue.Views.ShellView"
+             xmlns:vm="clr-namespace:Avalonia.ComboBox.Issue.ViewModels"
+             x:DataType="vm:ShellViewModel"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             Padding="0"
+             Margin="0">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:ShellViewModel />
+  </Design.DataContext>
+
+  <Grid Margin="15" RowDefinitions="Auto,*">
+
+    <!-- Row 0: Navigation and Close Buttons -->
+    <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+      <!-- Back Button -->
+      <Button Grid.Column="0"
+              Command="{Binding GoBack}"
+              Classes="IconButton"
+              IsEnabled="{Binding CanGoBack}"
+              IsVisible="{Binding CanGoBack}">
+        <TextBlock Text="Back" />
+      </Button>
+
+      <!-- Close Button -->
+      <Button Grid.Column="1"
+              HorizontalAlignment="Right"
+              Classes="IconButton"
+              Name="CloseButton"
+              Click="CloseButton_Click"
+              IsVisible="{Binding ShowCloseButton}"
+              IsEnabled="{Binding ClosingButtonEnabled}">
+        <TextBlock Text="Close" />
+      </Button>
+    </Grid>
+
+    <!-- Row 1: Main View Content -->
+    <rxui:RoutedViewHost Grid.Row="1"
+                          Router="{Binding Router}"
+                          ViewLocator="{StaticResource AppViewLocator}">
+      <rxui:RoutedViewHost.DefaultContent>
+        <TextBlock Text="No view loaded"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+      </rxui:RoutedViewHost.DefaultContent>
+    </rxui:RoutedViewHost>
+      
+  </Grid>
+
+</UserControl>
